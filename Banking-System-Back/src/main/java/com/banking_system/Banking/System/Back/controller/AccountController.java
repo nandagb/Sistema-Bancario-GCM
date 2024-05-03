@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class AccountController {
     @Autowired
@@ -16,9 +18,9 @@ public class AccountController {
 
     /* CRIA AS CONTAS */
     @PostMapping("/create")
-    public ResponseEntity<String> createAccount(@RequestBody int accountNumber){
+    public ResponseEntity<String> createAccount(@RequestBody Map<String, Integer> accountNumber){
         try {
-            accountService.createAccount(accountNumber);
+            accountService.createAccount(accountNumber.get("AccountNumber"));
             return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
         }
         catch (Exception e){
