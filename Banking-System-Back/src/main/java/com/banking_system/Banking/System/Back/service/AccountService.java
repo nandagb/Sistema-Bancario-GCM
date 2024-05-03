@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 public class AccountService {
     private List<Account> accounts = new ArrayList<Account>();
 
-    public int getAccountBalance(int accountNumber){
+    public int getAccountBalance(int accountNumber) {
         Boolean found = false;
         for (Account account : accounts) {
             if (account.getNumber() == accountNumber) {
@@ -19,9 +19,16 @@ public class AccountService {
                 return account.getBalance();
             }
         }
-        if (!found){
+        if (!found) {
             throw new NoSuchElementException();
         }
         return -1;
+    }
+
+    public void createAccount(int accountNumber){
+        Account newAccount = new Account();
+        newAccount.setNumber(accountNumber);
+        newAccount.setBalance(0);
+        accounts.add(newAccount);
     }
 }
