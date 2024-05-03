@@ -34,7 +34,7 @@ public class AccountController {
         try{
 
             accountService.addCredit(options.get("AccountNumber"), options.get("Value"));
-            return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+            return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
