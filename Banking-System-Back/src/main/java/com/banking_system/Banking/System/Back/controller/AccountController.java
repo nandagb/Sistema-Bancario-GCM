@@ -25,6 +25,7 @@ public class AccountController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     /* CRIA AS CONTAS */
     @PostMapping("/create")
     public ResponseEntity<String> createAccount(@RequestBody Map<String, Integer> accountNumber){

@@ -1,15 +1,15 @@
 <template>
-  <main>
+    <div>
+        <AppButton>Fazer Login</AppButton>
+    </div>
 
-    <RouterView>
-
-    </RouterView>
-
-  </main>
+    <RouterLink to="/signup">
+        <AppButton>Criar Conta</AppButton>
+    </RouterLink>
 </template>
 
 <script setup>
-
+import AppButton from '@/components/util/AppButton.vue'
 </script>
 
 <style>
