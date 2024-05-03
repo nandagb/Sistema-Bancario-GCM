@@ -27,4 +27,17 @@ public class AccountController {
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /* ADICIONA CREDITO NA CONTA */
+    @PostMapping("/credit")
+    public ResponseEntity<String> addCredit(@RequestBody Map<String, Integer> options){
+        try{
+
+            accountService.addCredit(options.get("AccountNumber"), options.get("Value"));
+            return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
