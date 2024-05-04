@@ -61,6 +61,27 @@ public class AccountService {
             return newBalance;
         }
     }
+
+    public Boolean transfer(int accountNumberOrigin, int accountNumberDestination, int value) throws NoSuchElementException {
+        if(accountNumberOrigin == accountNumberDestination){
+            return false;
+        }
+
+        Account origin = getAccount(accountNumberOrigin);
+        Account destination = getAccount(accountNumberDestination);
+
+        if (origin == null || destination == null) {
+            throw new NoSuchElementException();
+        }
+
+        int newBalanceOrigin = origin.getBalance() - value;
+        int newBalanceDestination = destination.getBalance() + value;
+
+        origin.setBalance(newBalanceOrigin);
+        destination.setBalance(newBalanceDestination);
+        return true;
+
+    }
     public void addCredit(int accountNumber, int creditValue){
         Account account = accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
         account.setBalance(account.getBalance() + creditValue);
