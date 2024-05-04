@@ -43,7 +43,7 @@ public class AccountController {
     @PostMapping("/debit")
     public ResponseEntity<String> debitFromAccount(@RequestBody Map<String, Integer> data) {
         try {
-            int newBalance = accountService.debitFromAccount(data.get("accountNumber"), data.get("value"));
+            int newBalance = accountService.debitFromAccount(data.get("AccountNumber"), data.get("Value"));
             return new ResponseEntity<>("Saldo: " + newBalance, HttpStatus.OK);
         } catch (IllegalAccessException e) {
             return new ResponseEntity<>("Saldo insuficiente! :( Operação abortada!", HttpStatus.INTERNAL_SERVER_ERROR);
