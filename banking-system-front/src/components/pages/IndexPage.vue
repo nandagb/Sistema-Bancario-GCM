@@ -1,11 +1,13 @@
 <template>
-    <div>
-        <AppButton>Fazer Login</AppButton>
-    </div>
-
-    <RouterLink to="/signup">
-        <AppButton>Criar Conta</AppButton>
+  <div>
+    <RouterLink to="/balance">
+      <AppButton>Consultar Saldo</AppButton>
     </RouterLink>
+  </div>
+
+  <RouterLink to="/signup">
+    <AppButton>Criar Conta</AppButton>
+  </RouterLink>
 </template>
 
 <script setup>
