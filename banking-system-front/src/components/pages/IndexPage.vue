@@ -1,23 +1,18 @@
 <template>
-<<<<<<< HEAD
-    <div>
-        <AppButton>Fazer Login</AppButton>
-    </div>
-
-    <div>
-      <RouterLink to="/signup">
-        <AppButton>Criar Conta</AppButton>
-      </RouterLink>
-    </div>
+  <div>
+    <RouterLink to="/signup">
+      <AppButton>Criar Conta</AppButton>
+    </RouterLink>
+  </div>
     
 
-    <RouterLink to="/debit">
-        <AppButton>Débito</AppButton>
-=======
+  <RouterLink to="/debit">
+    <AppButton>Débito</AppButton>
+  </RouterLink>
+
   <div>
     <RouterLink to="/balance">
       <AppButton>Consultar Saldo</AppButton>
->>>>>>> develop
     </RouterLink>
   </div>
 
