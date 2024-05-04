@@ -18,9 +18,11 @@
     </RouterLink>
   </div>
 
-  <RouterLink to="/transfer">
-    <AppButton>Transferência</AppButton>
-  </RouterLink>
+  <div>
+    <RouterLink to="/transfer">
+      <AppButton>Transferência</AppButton>
+    </RouterLink>
+  </div>
 
   <div>
     <RouterLink to="/credit">
