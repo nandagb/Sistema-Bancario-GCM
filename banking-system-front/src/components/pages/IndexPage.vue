@@ -18,8 +18,8 @@
     </RouterLink>
   </div>
 
-  <RouterLink to="/signup">
-    <AppButton>Criar Conta</AppButton>
+  <RouterLink to="/transfer">
+    <AppButton>Transferência</AppButton>
   </RouterLink>
 </template>
 
