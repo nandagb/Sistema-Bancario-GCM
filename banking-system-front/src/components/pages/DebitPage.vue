@@ -16,8 +16,6 @@ import { debit } from '@/services/accountService.js'
 
 let router = useRouter()
 const handleDebit = async (accountNumber, value) => {
-    console.log("accountNumber: " + accountNumber);
-    console.log("value: " + value);
     try {
         await debit(accountNumber, value)
         router.back()
