@@ -53,6 +53,22 @@ public class AccountController {
         }
     }
 
+    /* TRANSFERE DE UMA CONTA À OUTRA */
+    @CrossOrigin(origins = "*")
+    @PostMapping("/transfer")
+    public ResponseEntity<String> transfer(@RequestBody Map<String, Integer> data) {
+        try {
+            if(accountService.transfer(data.get("AccountNumberOrigin"), data.get("AccountNumberDestination"), data.get("Value"))){
+                return new ResponseEntity<>("Operação realizada com sucesso!", HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>("Operação falhou! :( ", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>("Usuário não encontrado! :(", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /* ADICIONA CREDITO NA CONTA */
     @PostMapping("/credit")
     public ResponseEntity<String> addCredit(@RequestBody Map<String, Integer> options){
