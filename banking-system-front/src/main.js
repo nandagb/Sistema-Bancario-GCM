@@ -3,8 +3,10 @@ import App from './App.vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import SignUp from './components/pages/SignUp.vue'
 import IndexPage from './components/pages/IndexPage.vue'
+import DebitPage from './components/pages/DebitPage.vue'
 import BalancePage from './components/pages/BalancePage.vue'
 import CreditPage from './components/pages/CreditPage.vue'
+
 
 const routes = [
     {
@@ -16,6 +18,11 @@ const routes = [
         path:"/signup",
         name:"signup",
         component:SignUp
+    },
+    {
+        path:"/debit",
+        name:"debit",
+        component:DebitPage
     },
     {
         path:"/balance",

@@ -41,6 +41,7 @@ public class AccountController {
     }
 
     /* DÉBITO */
+    @CrossOrigin(origins = "*")
     @PostMapping("/debit")
     public ResponseEntity<String> debitFromAccount(@RequestBody Map<String, Integer> data) {
         try {
