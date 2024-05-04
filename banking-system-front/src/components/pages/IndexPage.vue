@@ -3,8 +3,15 @@
         <AppButton>Fazer Login</AppButton>
     </div>
 
-    <RouterLink to="/signup">
+    <div>
+      <RouterLink to="/signup">
         <AppButton>Criar Conta</AppButton>
+      </RouterLink>
+    </div>
+    
+
+    <RouterLink to="/debit">
+        <AppButton>Débito</AppButton>
     </RouterLink>
 </template>
 
@@ -29,7 +36,7 @@ main {
   align-items: center;
 }
 
-div {
+div, AppButton {
   margin-bottom: 3em;
 }
 </style>
