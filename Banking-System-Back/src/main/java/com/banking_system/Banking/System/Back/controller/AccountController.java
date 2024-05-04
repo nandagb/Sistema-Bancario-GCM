@@ -16,6 +16,7 @@ public class AccountController {
     public AccountService accountService;
 
     /* CONSULTA SALDO */
+    @CrossOrigin(origins = "*")
     @RequestMapping("/get_balance")
     public ResponseEntity<Integer> getAccountBalance(@RequestParam int accountNumber) {
         try {
