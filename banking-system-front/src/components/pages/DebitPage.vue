@@ -2,10 +2,10 @@
     <div>
         <label for="number">Número da Conta</label>
         <input id="number" v-model="accountNumber" />
-        <label for="debit">Valor do Débito</label>
-        <input id="debit" v-model="debitValue" />
+        <label for="value">Valor do Débito</label>
+        <input id="value" v-model="value" />
     </div>
-    <AppButton @click="handleDebit(accountNumber, debitValue)">Debitar</AppButton>
+    <AppButton @click="handleDebit(accountNumber, value)">Debitar</AppButton>
 
 </template>
 
@@ -15,9 +15,11 @@ import AppButton from '../util/AppButton.vue';
 import { debit } from '@/services/accountService.js'
 
 let router = useRouter()
-const handleDebit = async (accountNumber, debitValue) => {
+const handleDebit = async (accountNumber, value) => {
+    console.log("accountNumber: " + accountNumber);
+    console.log("value: " + value);
     try {
-        await debit(accountNumber, debitValue)
+        await debit(accountNumber, value)
         router.back()
     }
     catch(e){
@@ -26,7 +28,7 @@ const handleDebit = async (accountNumber, debitValue) => {
 }
 
 let accountNumber
-let debitValue
+let value
 </script>
 
 <style>

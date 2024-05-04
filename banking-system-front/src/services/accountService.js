@@ -5,8 +5,8 @@ export const createAccount = async (accountNumber) => {
     await axios.post(`${backendURL}/create`, {AccountNumber: parseInt(accountNumber)})
 }
 
-export const debit = async (accountNumber, debitValue) => {
-    await axios.post(`${backendURL}/debit`, {AccountNumber: parseInt(accountNumber), DebitValue: parseInt(debitValue)})
+export const debit = async (accountNumber, value) => {
+    await axios.post(`${backendURL}/debit`, {AccountNumber: parseInt(accountNumber), Value: parseInt(value)})
 }
 
 export const consultBalance = async (accountNumber) =>{
