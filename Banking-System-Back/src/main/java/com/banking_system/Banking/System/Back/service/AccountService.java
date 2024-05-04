@@ -48,18 +48,21 @@ public class AccountService {
     public int debitFromAccount(int accountNumber, int value) throws IllegalAccessException {
         Account account = getAccount(accountNumber);
 
-        if(account == null){
+        if (account == null) {
             throw new NoSuchElementException();
         }
 
         int newBalance = account.getBalance() - value;
 
-        if(newBalance < 0){
+        if (newBalance < 0) {
             throw new IllegalAccessException();
-        }
-        else{
+        } else {
             account.setBalance(newBalance);
             return newBalance;
         }
+    }
+    public void addCredit(int accountNumber, int creditValue){
+        Account account = accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
+        account.setBalance(account.getBalance() + creditValue);
     }
 }
