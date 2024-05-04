@@ -5,10 +5,12 @@
     </RouterLink>
   </div>
     
-
-  <RouterLink to="/debit">
-    <AppButton>Débito</AppButton>
-  </RouterLink>
+  <div>
+    <RouterLink to="/debit">
+      <AppButton>Débito</AppButton>
+    </RouterLink>
+  </div>
+  
 
   <div>
     <RouterLink to="/balance">
