@@ -21,6 +21,16 @@
   <RouterLink to="/transfer">
     <AppButton>Transferência</AppButton>
   </RouterLink>
+
+  <div>
+    <RouterLink to="/credit">
+      <AppButton>Adicionar Crédito</AppButton>
+    </RouterLink>
+  </div>
+
+  <RouterLink to="/signup">
+    <AppButton>Criar Conta</AppButton>
+  </RouterLink>
 </template>
 
 <script setup>

@@ -6,6 +6,7 @@ import IndexPage from './components/pages/IndexPage.vue'
 import DebitPage from './components/pages/DebitPage.vue'
 import BalancePage from './components/pages/BalancePage.vue'
 import TransferPage from './components/pages/TransferPage.vue'
+import CreditPage from './components/pages/CreditPage.vue'
 
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
         path:"/transfer",
         name:"transfer",
         component:TransferPage
+    },
+    {
+        path:"/credit",
+        name:"credit",
+        component:CreditPage
     }
 ]
 
