@@ -25,7 +25,7 @@ import AppButton from '@/components/util/AppButton.vue'
 main {
   display: flex;
   flex-direction: column;
-  justify-items: space-between;
+  justify-content: space-between;
   align-items: center;
 }
 

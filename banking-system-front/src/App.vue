@@ -1,5 +1,8 @@
 <template>
   <main>
+    <div v-if="$route.name != 'index'">
+      <AppButton @click="goBack">Voltar</AppButton>
+    </div>
 
     <RouterView>
 
@@ -9,6 +12,12 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+import AppButton from './components/util/AppButton.vue';
+let router = useRouter()
+const goBack = () =>{
+  router.back()
+}
 
 </script>
 
@@ -25,8 +34,8 @@
 main {
   display: flex;
   flex-direction: column;
-  justify-items: space-between;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 div {
