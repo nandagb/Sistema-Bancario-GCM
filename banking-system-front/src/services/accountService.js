@@ -14,3 +14,7 @@ export const consultBalance = async (accountNumber) =>{
     return res.data
 
 }
+
+export const transfer = async (accountNumberOrigin, accountNumberDestination, value) =>{
+    await axios.get(`${backendURL}/transfer`, {AccountNumberOrigin: parseInt(accountNumberOrigin), AccountNumberDestination: parseInt(accountNumberDestination), Value: parseInt(value)})
+}
