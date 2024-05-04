@@ -54,6 +54,7 @@ public class AccountController {
     }
 
     /* ADICIONA CREDITO NA CONTA */
+    @CrossOrigin(origins = "*")
     @PostMapping("/credit")
     public ResponseEntity<String> addCredit(@RequestBody Map<String, Integer> options){
         try{
