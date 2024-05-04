@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div>
         <AppButton>Fazer Login</AppButton>
     </div>
@@ -12,7 +13,17 @@
 
     <RouterLink to="/debit">
         <AppButton>Débito</AppButton>
+=======
+  <div>
+    <RouterLink to="/balance">
+      <AppButton>Consultar Saldo</AppButton>
+>>>>>>> develop
     </RouterLink>
+  </div>
+
+  <RouterLink to="/signup">
+    <AppButton>Criar Conta</AppButton>
+  </RouterLink>
 </template>
 
 <script setup>
@@ -32,7 +43,7 @@ import AppButton from '@/components/util/AppButton.vue'
 main {
   display: flex;
   flex-direction: column;
-  justify-items: space-between;
+  justify-content: space-between;
   align-items: center;
 }
 

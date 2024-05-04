@@ -8,3 +8,9 @@ export const createAccount = async (accountNumber) => {
 export const debit = async (accountNumber, debitValue) => {
     await axios.post(`${backendURL}/debit`, {AccountNumber: parseInt(accountNumber), DebitValue: parseInt(debitValue)})
 }
+
+export const consultBalance = async (accountNumber) =>{
+    let res = await axios.get(`${backendURL}/get_balance?accountNumber=${accountNumber}`)
+    return res.data
+
+}

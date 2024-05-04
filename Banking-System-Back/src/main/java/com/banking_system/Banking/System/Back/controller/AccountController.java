@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestController
 public class AccountController {
@@ -15,6 +16,7 @@ public class AccountController {
     public AccountService accountService;
 
     /* CONSULTA SALDO */
+    @CrossOrigin(origins = "*")
     @RequestMapping("/get_balance")
     public ResponseEntity<Integer> getAccountBalance(@RequestParam int accountNumber) {
         try {
@@ -32,6 +34,32 @@ public class AccountController {
         try {
             accountService.createAccount(accountNumber.get("AccountNumber"));
             return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /* DÉBITO */
+    @PostMapping("/debit")
+    public ResponseEntity<String> debitFromAccount(@RequestBody Map<String, Integer> data) {
+        try {
+            int newBalance = accountService.debitFromAccount(data.get("AccountNumber"), data.get("Value"));
+            return new ResponseEntity<>("Saldo: " + newBalance, HttpStatus.OK);
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity<>("Saldo insuficiente! :( Operação abortada!", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>("Usuário não encontrado! :(", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /* ADICIONA CREDITO NA CONTA */
+    @PostMapping("/credit")
+    public ResponseEntity<String> addCredit(@RequestBody Map<String, Integer> options){
+        try{
+
+            accountService.addCredit(options.get("AccountNumber"), options.get("Value"));
+            return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
