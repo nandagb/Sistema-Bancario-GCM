@@ -1,6 +1,7 @@
 package com.banking_system.Banking.System.Back.service;
 
 import com.banking_system.Banking.System.Back.models.Account;
+import com.banking_system.Banking.System.Back.models.SavingsAccount;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,19 @@ public class AccountService {
         return -1;
     }
 
-    public void createAccount(int accountNumber){
+    public void createCurrentAccount(int accountNumber){
         Account newAccount = new Account();
         newAccount.setNumber(accountNumber);
         newAccount.setBalance(0);
+        newAccount.setType("current");
+        accounts.add(newAccount);
+    }
+
+    public void createSavingsAccount(int accountNumber){
+        SavingsAccount newAccount = new SavingsAccount();
+        newAccount.setNumber(accountNumber);
+        newAccount.setBalance(0);
+        newAccount.setType("savings");
         accounts.add(newAccount);
     }
 

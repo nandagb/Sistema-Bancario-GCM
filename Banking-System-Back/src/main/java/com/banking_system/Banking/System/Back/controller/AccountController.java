@@ -28,11 +28,24 @@ public class AccountController {
     }
 
     @CrossOrigin(origins = "*")
-    /* CRIA AS CONTAS */
-    @PostMapping("/create")
-    public ResponseEntity<String> createAccount(@RequestBody Map<String, Integer> accountNumber){
+    /* CRIA AS CONTAS CORRENTES */
+    @PostMapping("/create/current")
+    public ResponseEntity<String> createCurrentAccount(@RequestBody Map<String, Integer> accountNumber){
         try {
-            accountService.createAccount(accountNumber.get("AccountNumber"));
+            accountService.createCurrentAccount(accountNumber.get("AccountNumber"));
+            return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @CrossOrigin(origins = "*")
+    /* CRIA AS CONTAS POUPANÇA*/
+    @PostMapping("/create/savings")
+    public ResponseEntity<String> createSavingsAccount(@RequestBody Map<String, Integer> accountNumber){
+        try {
+            accountService.createSavingsAccount(accountNumber.get("AccountNumber"));
             return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
         }
         catch (Exception e){

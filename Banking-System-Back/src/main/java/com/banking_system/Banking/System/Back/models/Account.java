@@ -5,6 +5,14 @@ public class Account {
 
     private int balance;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     protected String type;
 
     public int getNumber() {
