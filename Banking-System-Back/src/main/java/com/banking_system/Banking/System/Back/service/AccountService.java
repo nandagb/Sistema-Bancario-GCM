@@ -62,7 +62,7 @@ public class AccountService {
         }
     }
 
-    public Boolean transfer(int accountNumberOrigin, int accountNumberDestination, int value) throws NoSuchElementException {
+    public Boolean transfer(int accountNumberOrigin, int accountNumberDestination, int value) throws NoSuchElementException, IllegalAccessException {
         if(accountNumberOrigin == accountNumberDestination){
             return false;
         }
@@ -77,8 +77,13 @@ public class AccountService {
         int newBalanceOrigin = origin.getBalance() - value;
         int newBalanceDestination = destination.getBalance() + value;
 
-        origin.setBalance(newBalanceOrigin);
-        destination.setBalance(newBalanceDestination);
+        if (newBalanceOrigin < 0) {
+            throw new IllegalAccessException();
+        } else {
+            origin.setBalance(newBalanceOrigin);
+            destination.setBalance(newBalanceDestination);
+        }
+
         return true;
 
     }
