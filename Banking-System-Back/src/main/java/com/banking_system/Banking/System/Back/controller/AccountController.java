@@ -65,7 +65,9 @@ public class AccountController {
             else{
                 return new ResponseEntity<>("Operação falhou! :( ", HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        } catch (NoSuchElementException e) {
+        }  catch (IllegalAccessException e) {
+            return new ResponseEntity<>("Saldo insuficiente! :( Operação abortada!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }  catch (NoSuchElementException e) {
             return new ResponseEntity<>("Usuário não encontrado! :(", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
