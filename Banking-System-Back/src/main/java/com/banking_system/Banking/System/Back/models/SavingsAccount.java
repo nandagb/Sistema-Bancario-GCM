@@ -1,2 +1,7 @@
-package com.banking_system.Banking.System.Back.models;public class SavingsAccount {
+package com.banking_system.Banking.System.Back.models;
+
+public class SavingsAccount extends Account{
+    SavingsAccount(){
+        this.type = "savings";
+    }
 }

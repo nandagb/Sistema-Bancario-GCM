@@ -5,6 +5,8 @@ public class Account {
 
     private int balance;
 
+    protected String type;
+
     public int getNumber() {
         return number;
     }
