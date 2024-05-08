@@ -10,12 +10,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import AppButton from '../util/AppButton.vue';
-import { createAccount } from '@/services/accountService.js'
+import { createCurrentAccount } from '@/services/accountService.js'
 
 let router = useRouter()
 const handleCreateAccount = async (accountNumber) => {
     try {
-        await createAccount(accountNumber)
+        await createCurrentAccount(accountNumber)
         router.back()
     }
     catch(e){

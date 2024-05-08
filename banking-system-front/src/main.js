@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
-import SignUp from './components/pages/SignUp.vue'
+import SignUpCurrent from './components/pages/SignUpCurrent.vue'
+import SignUpSavings from './components/pages/SignUpSavings.vue'
 import IndexPage from './components/pages/IndexPage.vue'
 import DebitPage from './components/pages/DebitPage.vue'
 import BalancePage from './components/pages/BalancePage.vue'
@@ -16,9 +17,14 @@ const routes = [
         component:IndexPage
     },
     {
-        path:"/signup",
-        name:"signup",
-        component:SignUp
+        path:"/signup/current",
+        name:"signup_current",
+        component:SignUpCurrent
+    },
+    {
+        path:"/signup/savings",
+        name:"signup_savings",
+        component:SignUpSavings
     },
     {
         path:"/debit",

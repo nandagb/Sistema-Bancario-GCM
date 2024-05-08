@@ -1,8 +1,12 @@
 import axios from "axios"
 const backendURL= process.env.VUE_APP_ACCOUNT_BACKEND;
 
-export const createAccount = async (accountNumber) => {
-    await axios.post(`${backendURL}/create`, {AccountNumber: parseInt(accountNumber)})
+export const createCurrentAccount = async (accountNumber) => {
+    await axios.post(`${backendURL}/create/current`, {AccountNumber: parseInt(accountNumber)})
+}
+
+export const createSavingsAccount = async (accountNumber) => {
+    await axios.post(`${backendURL}/create/savings`, {AccountNumber: parseInt(accountNumber)})
 }
 
 export const debit = async (accountNumber, value) => {
