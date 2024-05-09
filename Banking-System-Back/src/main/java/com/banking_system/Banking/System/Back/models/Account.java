@@ -3,7 +3,7 @@ package com.banking_system.Banking.System.Back.models;
 public class Account {
     private int number;
 
-    private int balance;
+    private float balance;
 
     public String getType() {
         return type;
@@ -23,11 +23,11 @@ public class Account {
         this.number = number;
     }
 
-    public int getBalance() {
+    public float getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 }
