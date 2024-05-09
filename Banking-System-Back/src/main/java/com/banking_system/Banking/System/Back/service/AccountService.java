@@ -66,7 +66,7 @@ public class AccountService {
     }
 
     public Boolean transfer(int accountNumberOrigin, int accountNumberDestination, int value) throws NoSuchElementException, IllegalAccessException {
-        if(accountNumberOrigin == accountNumberDestination){
+        if(accountNumberOrigin == accountNumberDestination || value < 0){
             return false;
         }
 
