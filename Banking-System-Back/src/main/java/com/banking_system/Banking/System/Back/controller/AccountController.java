@@ -1,5 +1,6 @@
 package com.banking_system.Banking.System.Back.controller;
 
+import com.banking_system.Banking.System.Back.models.Account;
 import com.banking_system.Banking.System.Back.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,21 @@ public class AccountController {
     @Autowired
     public AccountService accountService;
 
+    /* CONSULTA CONTA */
+    @CrossOrigin(origins = "*")
+    @GetMapping("/get_account")
+    public ResponseEntity<Account> getAccount(@RequestParam int AccountNumber) {
+        try {
+            Account account = accountService.getAccount(AccountNumber);
+            return new ResponseEntity<Account>(account, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /* CONSULTA SALDO */
     @CrossOrigin(origins = "*")
-    @RequestMapping("/get_balance")
+    @GetMapping("/get_balance")
     public ResponseEntity<Float> getAccountBalance(@RequestParam int accountNumber) {
         try {
             float account_balance = accountService.getAccountBalance(accountNumber);
@@ -42,7 +55,20 @@ public class AccountController {
     }
 
     @CrossOrigin(origins = "*")
+    /* CRIA CONTAS BÔNUS */
+    @PostMapping("/create/bonus_account")
+    public ResponseEntity<String> createBonusAccount(@RequestBody Map<String, Integer> accountNumber){
+        try {
+            accountService.createBonusAccount(accountNumber.get("AccountNumber"));
+            return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
     /* CRIA AS CONTAS POUPANÇA*/
+    @CrossOrigin(origins="*")
     @PostMapping("/create/savings")
     public ResponseEntity<String> createSavingsAccount(@RequestBody Map<String, Integer> accountNumber){
         try {
@@ -107,6 +133,20 @@ public class AccountController {
         try{
 
             accountService.addCredit(options.get("AccountNumber"), options.get("Value"));
+            return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /* ADICIONA CREDITO NA CONTA BÔNUS */
+    @CrossOrigin(origins = "*")
+    @PostMapping("/credit/bonus_account")
+    public ResponseEntity<String> addCreditBonusAccount(@RequestBody Map<String, Integer> options){
+        try{
+
+            accountService.addCreditBonusAccount(options.get("AccountNumber"), options.get("Value"));
             return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
         }
         catch (Exception e){

@@ -5,16 +5,7 @@ public class Account {
 
     private float balance;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     protected String type;
-
     public int getNumber() {
         return number;
     }
@@ -29,5 +20,13 @@ public class Account {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -8,6 +8,7 @@ import DebitPage from './components/pages/DebitPage.vue'
 import BalancePage from './components/pages/BalancePage.vue'
 import TransferPage from './components/pages/TransferPage.vue'
 import CreditPage from './components/pages/CreditPage.vue'
+import SignUpBonusAccount from './components/pages/SignUpBonusAccount.vue'
 import YieldInterest from './components/pages/YieldInterest.vue'
 
 
@@ -26,6 +27,11 @@ const routes = [
         path:"/signup/savings",
         name:"signup_savings",
         component:SignUpSavings
+    },
+    {
+        path:"/signup/bonus_account",
+        name:"signupBonusAccount",
+        component:SignUpBonusAccount
     },
     {
         path:"/debit",
