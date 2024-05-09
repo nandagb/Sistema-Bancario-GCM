@@ -32,6 +32,7 @@ public class AccountService {
         Account newAccount = new Account();
         newAccount.setNumber(accountNumber);
         newAccount.setBalance(0);
+        newAccount.setType("current_account");
         accounts.add(newAccount);
     }
 
