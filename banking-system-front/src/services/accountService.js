@@ -1,5 +1,15 @@
 import axios from "axios"
+import {ref} from 'vue'
 const backendURL= process.env.VUE_APP_ACCOUNT_BACKEND;
+
+export const currentAccount = ref()
+
+/* REQUISIÇÕES HTTP */
+
+export const getAccount = async (accountNumber) => {
+    let res = await axios.get(`${backendURL}/get_account?AccountNumber=${parseInt(accountNumber)}`)
+    return res.data
+}
 
 export const createAccount = async (accountNumber) => {
     await axios.post(`${backendURL}/create`, {AccountNumber: parseInt(accountNumber)})
@@ -21,4 +31,8 @@ export const transfer = async (accountNumberOrigin, accountNumberDestination, va
 export const addCredit = async (accountNumber, value) =>{
     let res = await axios.post(`${backendURL}/credit`, {AccountNumber: parseInt(accountNumber), Value: parseInt(value)})
     return res.data
+}
+
+export const addCreditBonusAccount = async (accountNumber, value) => {
+    await axios.post(`${backendURL}/credit/bonus_account`, {AccountNumber: parseInt(accountNumber), Value: parseInt(value)})
 }

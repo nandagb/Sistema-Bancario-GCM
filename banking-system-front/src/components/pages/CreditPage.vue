@@ -18,7 +18,7 @@
 </template>
 <script setup>
 import AppButton from '../util/AppButton.vue';
-import {addCredit} from '@/services/accountService.js'
+import {addCredit, currentAccount, addCreditBonusAccount, getAccount} from '@/services/accountService.js'
 import {ref} from 'vue'
 let accountNumber
 let value
@@ -26,7 +26,15 @@ let sent = ref()
 
 let handleCredit = async () =>{
     try{
-        await addCredit(accountNumber, value)
+        currentAccount.value = await getAccount(accountNumber)
+        switch(currentAccount.value.type){
+            case "bonus_account":
+                await addCreditBonusAccount(accountNumber, value)
+                break
+            default:
+                await addCredit(accountNumber, value)
+                break
+        }
         sent.value = true
     }
     catch(e){
