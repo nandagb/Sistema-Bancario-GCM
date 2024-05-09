@@ -1,7 +1,13 @@
 <template>
   <div>
-    <RouterLink to="/signup">
-      <AppButton>Criar Conta</AppButton>
+    <RouterLink to="/signup/current">
+      <AppButton>Criar Conta Corrente</AppButton>
+    </RouterLink>
+  </div>
+
+  <div>
+    <RouterLink to="/signup/savings">
+      <AppButton>Criar Conta Poupanca</AppButton>
     </RouterLink>
   </div>
     
@@ -27,6 +33,12 @@
   <div>
     <RouterLink to="/credit">
       <AppButton>Adicionar Crédito</AppButton>
+    </RouterLink>
+  </div>
+
+  <div>
+    <RouterLink to="/yield_interest">
+      <AppButton>Render Juros</AppButton>
     </RouterLink>
   </div>
 </template>
