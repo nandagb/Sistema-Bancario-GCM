@@ -12,23 +12,15 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import AppButton from '../util/AppButton.vue';
-import { debit, currentAccount, getAccount, debitBonusAccount } from '@/services/accountService.js'
+import { debit} from '@/services/accountService.js'
 
 let router = useRouter()
 const handleDebit = async (accountNumber, value) => {
     try {
-        currentAccount.value = await getAccount(accountNumber)
-        switch(currentAccount.value.type){
-            case "bonus_account":
-                await debitBonusAccount(accountNumber)
-                break
-            default:
-                await debit(accountNumber, value)
-                break
-        }
+        await debit(accountNumber, value)
         router.back()
     }
-    catch(e){
+    catch (e) {
         console.error(e);
     }
 }
