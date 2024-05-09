@@ -27,6 +27,7 @@ let sent = ref()
 let handleCredit = async () =>{
     try{
         currentAccount.value = await getAccount(accountNumber)
+        console.log(currentAccount.value)
         switch(currentAccount.value.type){
             case "bonus_account":
                 await addCreditBonusAccount(accountNumber, value)
