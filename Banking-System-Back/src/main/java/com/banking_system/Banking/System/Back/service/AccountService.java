@@ -46,6 +46,9 @@ public class AccountService {
         return null;
     }
     public int debitFromAccount(int accountNumber, int value) throws IllegalAccessException {
+        if (value < 0){
+            return -1;
+        }
         Account account = getAccount(accountNumber);
 
         if (account == null) {
@@ -63,7 +66,7 @@ public class AccountService {
     }
 
     public Boolean transfer(int accountNumberOrigin, int accountNumberDestination, int value) throws NoSuchElementException, IllegalAccessException {
-        if(accountNumberOrigin == accountNumberDestination){
+        if(accountNumberOrigin == accountNumberDestination || value < 0){
             return false;
         }
 
@@ -87,7 +90,10 @@ public class AccountService {
         return true;
 
     }
-    public void addCredit(int accountNumber, int creditValue){
+    public void addCredit(int accountNumber, int creditValue) throws IllegalAccessException {
+        if (creditValue < 0){
+            throw new IllegalAccessException();
+        }
         Account account = accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
         account.setBalance(account.getBalance() + creditValue);
     }
