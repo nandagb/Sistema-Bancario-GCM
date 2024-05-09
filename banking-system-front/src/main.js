@@ -8,6 +8,7 @@ import DebitPage from './components/pages/DebitPage.vue'
 import BalancePage from './components/pages/BalancePage.vue'
 import TransferPage from './components/pages/TransferPage.vue'
 import CreditPage from './components/pages/CreditPage.vue'
+import YieldInterest from './components/pages/YieldInterest.vue'
 
 
 const routes = [
@@ -45,6 +46,11 @@ const routes = [
         path:"/credit",
         name:"credit",
         component:CreditPage
+    },
+    {
+        path:"/yield_interest",
+        name:"yield_interest",
+        component:YieldInterest
     }
 ]
 

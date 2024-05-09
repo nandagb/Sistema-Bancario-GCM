@@ -26,3 +26,8 @@ export const addCredit = async (accountNumber, value) =>{
     let res = await axios.post(`${backendURL}/credit`, {AccountNumber: parseInt(accountNumber), Value: parseInt(value)})
     return res.data
 }
+
+export const yieldInterest = async (interestRate) =>{
+    let res = await axios.post(`${backendURL}/yield_interest`, {InterestRate: parseFloat(interestRate)})
+    return res.data
+}

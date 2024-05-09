@@ -35,6 +35,12 @@
       <AppButton>Adicionar Crédito</AppButton>
     </RouterLink>
   </div>
+
+  <div>
+    <RouterLink to="/yield_interest">
+      <AppButton>Render Juros</AppButton>
+    </RouterLink>
+  </div>
 </template>
 
 <script setup>
