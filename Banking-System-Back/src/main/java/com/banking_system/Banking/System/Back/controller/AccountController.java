@@ -87,6 +87,9 @@ public class AccountController {
             accountService.addCredit(options.get("AccountNumber"), options.get("Value"));
             return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
         }
+        catch (IllegalAccessException e){
+            return new ResponseEntity<>("Operação falhou! :(", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         catch (Exception e){
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

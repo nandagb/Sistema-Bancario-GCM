@@ -90,7 +90,10 @@ public class AccountService {
         return true;
 
     }
-    public void addCredit(int accountNumber, int creditValue){
+    public void addCredit(int accountNumber, int creditValue) throws IllegalAccessException {
+        if (creditValue < 0){
+            throw new IllegalAccessException();
+        }
         Account account = accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
         account.setBalance(account.getBalance() + creditValue);
     }
