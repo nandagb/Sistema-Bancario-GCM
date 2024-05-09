@@ -11,6 +11,10 @@ export const getAccount = async (accountNumber) => {
     return res.data
 }
 
+export const createBonusAccount = async (accountNumber) => {
+    await axios.post(`${backendURL}/create/bonus_account`, {AccountNumber: parseInt(accountNumber)})
+}
+
 export const createAccount = async (accountNumber) => {
     await axios.post(`${backendURL}/create`, {AccountNumber: parseInt(accountNumber)})
 }

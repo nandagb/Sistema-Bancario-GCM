@@ -4,6 +4,12 @@
       <AppButton>Criar Conta</AppButton>
     </RouterLink>
   </div>
+
+  <div>
+    <RouterLink to="/signup/bonus_account">
+      <AppButton>Criar Conta Bônus</AppButton>
+    </RouterLink>
+  </div>
     
   <div>
     <RouterLink to="/debit">
