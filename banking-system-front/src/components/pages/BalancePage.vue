@@ -7,7 +7,7 @@
         <h1 v-if="balance != null">
             O saldo da conta {{searchedAccountNumber}} é de: <br/><br/> <span style="color: green;"> {{ balance }}R$ </span>
         </h1>
-        <h2 v-if="balance">
+        <h2 v-if="bonus">
             O bônus da conta é de: <br/><br/> <span style="color: green;"> {{ bonus }}R$ </span>
         </h2>
     </div>
@@ -28,6 +28,7 @@ let handleGetBalance = async () =>{
     try{
         currentAccount.value = await getAccount(accountNumber)
         balance.value = currentAccount.value.balance
+        console.log(balance.value)
         bonus.value = currentAccount.value.bonus
     }
     catch(e){
