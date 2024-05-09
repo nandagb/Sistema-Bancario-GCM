@@ -46,6 +46,9 @@ public class AccountService {
         return null;
     }
     public int debitFromAccount(int accountNumber, int value) throws IllegalAccessException {
+        if (value < 0){
+            return -1;
+        }
         Account account = getAccount(accountNumber);
 
         if (account == null) {
