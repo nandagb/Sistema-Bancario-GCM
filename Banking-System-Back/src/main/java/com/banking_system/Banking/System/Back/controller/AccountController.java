@@ -40,6 +40,19 @@ public class AccountController {
         }
     }
 
+    @CrossOrigin(origins = "*")
+    /* CRIA CONTAS BÔNUS */
+    @PostMapping("/create/bonus_account")
+    public ResponseEntity<String> createBonusAccount(@RequestBody Map<String, Integer> accountNumber){
+        try {
+            accountService.createBonusAccount(accountNumber.get("AccountNumber"));
+            return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /* DÉBITO */
     @CrossOrigin(origins = "*")
     @PostMapping("/debit")
@@ -79,6 +92,20 @@ public class AccountController {
         try{
 
             accountService.addCredit(options.get("AccountNumber"), options.get("Value"));
+            return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /* ADICIONA CREDITO NA CONTA BÔNUS */
+    @CrossOrigin(origins = "*")
+    @PostMapping("/credit/bonus_account")
+    public ResponseEntity<String> addCreditBonusAccount(@RequestBody Map<String, Integer> options){
+        try{
+
+            accountService.addCreditBonusAccount(options.get("AccountNumber"), options.get("Value"));
             return new ResponseEntity<>("Crédito adicionado com sucesso!", HttpStatus.OK);
         }
         catch (Exception e){

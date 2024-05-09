@@ -1,6 +1,7 @@
 package com.banking_system.Banking.System.Back.service;
 
 import com.banking_system.Banking.System.Back.models.Account;
+import com.banking_system.Banking.System.Back.models.BonusAccount;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,13 @@ public class AccountService {
 
     public void createAccount(int accountNumber){
         Account newAccount = new Account();
+        newAccount.setNumber(accountNumber);
+        newAccount.setBalance(0);
+        accounts.add(newAccount);
+    }
+
+    public void createBonusAccount(int accountNumber){
+        Account newAccount = new BonusAccount(accountNumber);
         newAccount.setNumber(accountNumber);
         newAccount.setBalance(0);
         accounts.add(newAccount);
@@ -77,6 +85,11 @@ public class AccountService {
         int newBalanceOrigin = origin.getBalance() - value;
         int newBalanceDestination = destination.getBalance() + value;
 
+        if(destination.getType().equals("bonus_account")){
+            BonusAccount bonusAccount = (BonusAccount) destination;
+            bonusAccount.setBonus(bonusAccount.getBonus() + Math.floorDiv(value, 200));
+        }
+
         if (newBalanceOrigin < 0) {
             throw new IllegalAccessException();
         } else {
@@ -90,5 +103,11 @@ public class AccountService {
     public void addCredit(int accountNumber, int creditValue){
         Account account = accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
         account.setBalance(account.getBalance() + creditValue);
+    }
+
+    public void addCreditBonusAccount(int accountNumber, int creditValue){
+        BonusAccount account = (BonusAccount) accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
+        account.setBalance(account.getBalance() + creditValue);
+        account.setBonus(account.getBonus() + Math.floorDiv(creditValue, 100) );
     }
 }

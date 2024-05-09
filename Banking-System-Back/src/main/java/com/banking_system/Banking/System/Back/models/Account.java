@@ -5,6 +5,8 @@ public class Account {
 
     private int balance;
 
+    protected String type;
+
     public int getNumber() {
         return number;
     }
@@ -19,5 +21,13 @@ public class Account {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
