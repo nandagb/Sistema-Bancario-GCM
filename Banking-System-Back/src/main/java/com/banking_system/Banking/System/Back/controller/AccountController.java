@@ -1,5 +1,6 @@
 package com.banking_system.Banking.System.Back.controller;
 
+import com.banking_system.Banking.System.Back.models.Account;
 import com.banking_system.Banking.System.Back.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,9 +16,21 @@ public class AccountController {
     @Autowired
     public AccountService accountService;
 
+    /* CONSULTA CONTA */
+    @CrossOrigin(origins = "*")
+    @GetMapping("/get_account")
+    public ResponseEntity<Account> getAccount(@RequestParam int AccountNumber) {
+        try {
+            Account account = accountService.getAccount(AccountNumber);
+            return new ResponseEntity<Account>(account, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /* CONSULTA SALDO */
     @CrossOrigin(origins = "*")
-    @RequestMapping("/get_balance")
+    @GetMapping("/get_balance")
     public ResponseEntity<Integer> getAccountBalance(@RequestParam int accountNumber) {
         try {
             int account_balance = accountService.getAccountBalance(accountNumber);
