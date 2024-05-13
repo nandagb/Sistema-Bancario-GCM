@@ -45,10 +45,10 @@ public class AccountService {
         accounts.add(newAccount);
     }
 
-    public void createSavingsAccount(int accountNumber){
+    public void createSavingsAccount(int accountNumber, float accountBalance){
         SavingsAccount newAccount = new SavingsAccount();
         newAccount.setNumber(accountNumber);
-        newAccount.setBalance(0);
+        newAccount.setBalance(accountBalance);
         newAccount.setType("savings");
         accounts.add(newAccount);
     }
