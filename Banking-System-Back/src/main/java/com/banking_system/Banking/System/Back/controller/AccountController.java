@@ -72,8 +72,12 @@ public class AccountController {
     @PostMapping("/create/savings")
     public ResponseEntity<String> createSavingsAccount(@RequestBody Map<String, Float> accountInfo){
         try {
-            accountService.createSavingsAccount(Math.round(accountInfo.get("AccountNumber")), accountInfo.get("AccountBalance"));
-            return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+            if(accountService.createSavingsAccount(Math.round(accountInfo.get("AccountNumber")), accountInfo.get("AccountBalance"))){
+                return new ResponseEntity<>("Conta criada com sucesso!", HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>("Operação falhou! :( ", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
         catch (Exception e){
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
