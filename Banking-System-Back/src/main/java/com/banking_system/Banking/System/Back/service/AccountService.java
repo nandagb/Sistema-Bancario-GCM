@@ -45,12 +45,16 @@ public class AccountService {
         accounts.add(newAccount);
     }
 
-    public void createSavingsAccount(int accountNumber){
+    public Boolean createSavingsAccount(int accountNumber, float accountBalance){
+        if (accountBalance < 0) {
+            return false;
+        }
         SavingsAccount newAccount = new SavingsAccount();
         newAccount.setNumber(accountNumber);
-        newAccount.setBalance(0);
+        newAccount.setBalance(accountBalance);
         newAccount.setType("savings");
         accounts.add(newAccount);
+        return true;
     }
 
     public ArrayList<Account> yieldInterest(float interest_rate_percentage){
