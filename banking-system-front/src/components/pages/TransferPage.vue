@@ -38,17 +38,16 @@ let accountNumberDestination
 let value
 let sent = ref()
 </script>
-
 <style>
-input {
-    width: 20em;
-    height: 2em;
-    border-radius: 10px;
-    border: 2px solid green;
-}
+    input {
+        width: 20em;
+        height: 2em;
+        border-radius: 10px;
+        border: 2px solid green;
+    }
 
-div {
-    display: flex;
-    flex-direction: column;
-}
+    div {
+        display: flex;
+        flex-direction: column;
+    }
 </style>

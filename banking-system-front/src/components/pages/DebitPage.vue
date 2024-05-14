@@ -12,7 +12,8 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import AppButton from '../util/AppButton.vue';
-import { debit } from '@/services/accountService.js'
+import { debit} from '@/services/accountService.js'
+
 
 let router = useRouter()
 const handleDebit = async (accountNumber, value) => {
@@ -20,7 +21,7 @@ const handleDebit = async (accountNumber, value) => {
         await debit(accountNumber, value)
         router.back()
     }
-    catch(e){
+    catch (e) {
         console.error(e);
     }
 }
