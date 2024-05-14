@@ -17,7 +17,6 @@ public class AccountController {
     @Autowired
     public AccountService accountService;
 
-
     /* CONSULTA CONTA */
     @CrossOrigin(origins = "*")
     @GetMapping("/get_account")
@@ -54,7 +53,6 @@ public class AccountController {
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     @CrossOrigin(origins = "*")
     /* CRIA CONTAS BÔNUS */

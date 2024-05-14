@@ -14,7 +14,6 @@ import { useRouter } from 'vue-router';
 import AppButton from '../util/AppButton.vue';
 import { debit} from '@/services/accountService.js'
 
-
 let router = useRouter()
 const handleDebit = async (accountNumber, value) => {
     try {

@@ -6,7 +6,6 @@ public class Account {
     private float balance;
 
     protected String type;
-
     public int getNumber() {
         return number;
     }

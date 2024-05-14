@@ -7,7 +7,6 @@
         <h1 v-if="balance != null">
             O saldo da conta {{searchedAccountNumber}} é de: <br/><br/> <span style="color: green;"> {{ balance }}R$ </span>
         </h1>
-
         <h2 v-if="bonus">
             O bônus da conta é de: <br/><br/> <span style="color: green;"> {{ bonus }}R$ </span>
         </h2>
@@ -18,7 +17,6 @@
 </template>
 <script setup>
 import AppButton from '../util/AppButton.vue';
-
 import {currentAccount, getAccount} from '@/services/accountService.js'
 import {ref} from 'vue'
 let accountNumber

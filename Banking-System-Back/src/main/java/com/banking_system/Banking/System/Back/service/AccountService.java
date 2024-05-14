@@ -1,10 +1,8 @@
 package com.banking_system.Banking.System.Back.service;
 
 import com.banking_system.Banking.System.Back.models.Account;
-
 import com.banking_system.Banking.System.Back.models.BonusAccount;
 import com.banking_system.Banking.System.Back.models.SavingsAccount;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,9 +15,7 @@ import java.util.NoSuchElementException;
 public class AccountService {
     private List<Account> accounts = new ArrayList<Account>();
 
-
     public float getAccountBalance(int accountNumber) {
-
         Boolean found = false;
         for (Account account : accounts) {
             if (account.getNumber() == accountNumber) {
@@ -32,7 +28,6 @@ public class AccountService {
         }
         return -1;
     }
-
 
     public void createCurrentAccount(int accountNumber){
         Account newAccount = new Account();
@@ -87,7 +82,6 @@ public class AccountService {
         return null;
     }
 
-
     public float debitFromAccount(int accountNumber, int value) throws IllegalAccessException {
         if (value < 0){
             return -1;
@@ -122,7 +116,6 @@ public class AccountService {
         if (origin == null || destination == null) {
             throw new NoSuchElementException();
         }
-
 
         float newBalanceOrigin = origin.getBalance() - value;
         float newBalanceDestination = destination.getBalance() + value;
