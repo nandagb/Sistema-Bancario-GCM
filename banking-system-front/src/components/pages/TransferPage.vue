@@ -38,6 +38,7 @@ let accountNumberDestination
 let value
 let sent = ref()
 </script>
+
 <style>
     input {
         width: 20em;
