@@ -116,7 +116,7 @@ public class AccountService {
 
         if(destination.getType().equals("bonus_account")){
             BonusAccount bonusAccount = (BonusAccount) destination;
-            bonusAccount.setBonus(bonusAccount.getBonus() + Math.floorDiv(value, 200));
+            bonusAccount.setBonus(bonusAccount.getBonus() + Math.floorDiv(value, 150));
         }
 
         if (newBalanceOrigin < 0) {
