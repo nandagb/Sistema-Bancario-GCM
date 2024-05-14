@@ -14,21 +14,24 @@
 import { useRouter } from 'vue-router';
 import AppButton from '../util/AppButton.vue';
 import { addCredit, createAccount } from '@/services/accountService.js'
+import {ref} from 'vue'
 
 let router = useRouter()
 const handleCreateAccount = async (accountNumber) => {
     try {
-        await createAccount(accountNumber)
-        await addCredit(accountNumber, initialBalance)
-        router.back()
+        if (initialBalance.value >= 0) {
+            await createAccount(accountNumber)
+            await addCredit(accountNumber, initialBalance.value)
+            router.back()
+        }
     }
-    catch(e){
+    catch (e) {
         console.error(e);
     }
 }
 
 let accountNumber
-let initialBalance
+let initialBalance = ref(0)
 </script>
 
 <style>
