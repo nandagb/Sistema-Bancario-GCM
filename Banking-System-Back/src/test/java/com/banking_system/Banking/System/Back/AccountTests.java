@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.within;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
@@ -125,5 +126,25 @@ public class AccountTests {
         assertThrows(IllegalAccessException.class, () -> {
             accountService.debitFromAccount(12, 1124);
         });
+    }
+
+    void createSavingsAccounts(){
+        accountService.createSavingsAccount(13, 0);
+        accountService.createSavingsAccount(14, 100);
+        accountService.createSavingsAccount(15, 150);
+    }
+
+
+    @Test
+    void yieldInterestTest() throws IllegalAccessException {
+        createSavingsAccounts();
+        Account account1 = accountService.getAccount(13);
+        Account account2 = accountService.getAccount(14);
+        Account account3 = accountService.getAccount(15);
+
+        accountService.yieldInterest(12.13f);
+        assertThat(account1.getBalance()).isEqualTo(0);
+        assertThat(account2.getBalance()).isCloseTo(112.13f, within(0.001f));
+        assertThat(account3.getBalance()).isCloseTo(168.195f, within(0.001f));
     }
 }
