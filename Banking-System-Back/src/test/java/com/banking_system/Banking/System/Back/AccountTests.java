@@ -98,7 +98,7 @@ public class AccountTests {
         accountService.createBonusAccount(9);
         Account account = accountService.getAccount(9);
         assertThat(((BonusAccount) account).getBonus()).isEqualTo(10);
-        accountService.addCredit(9, 540);
+        accountService.addCreditBonusAccount(9, 540);
         assertThat(((BonusAccount) account).getBonus()).isEqualTo(15);
     }
 
