@@ -152,51 +152,51 @@ public class AccountTests {
 
     @Test
     void transferNegativeAmount() throws IllegalAccessException, NoSuchElementException {
-        accountService.createSavingsAccount(13, 100);
-        accountService.createBonusAccount(14);
+        accountService.createSavingsAccount(16, 100);
+        accountService.createBonusAccount(17);
 
         assertThat(accountService.transfer(13, 14, -100) == false);
     }
 
     @Test
     void transferMoreThanBalanceSavings() throws NoSuchElementException {
-        accountService.createSavingsAccount(15, 100);
-        accountService.createBonusAccount(16);
+        accountService.createSavingsAccount(18, 100);
+        accountService.createBonusAccount(19);
 
         assertThrows(IllegalAccessException.class, () ->{
-            accountService.transfer(15, 16, 101);
+            accountService.transfer(18, 19, 101);
         });
     }
 
     @Test
     void transferMoreThanBalanceCurrent() throws NoSuchElementException {
-        accountService.createCurrentAccount(17);
-        accountService.createCurrentAccount(18);
+        accountService.createCurrentAccount(20);
+        accountService.createCurrentAccount(21);
 
 
         assertThrows(IllegalAccessException.class, () ->{
-            accountService.transfer(17, 18, 1001);
+            accountService.transfer(20, 21, 1001);
         });
     }
 
     @Test
     void transferMoreThanBalanceBonus() throws NoSuchElementException {
-        accountService.createBonusAccount(19);
-        accountService.createBonusAccount(20);
+        accountService.createBonusAccount(22);
+        accountService.createBonusAccount(23);
 
 
         assertThrows(IllegalAccessException.class, () ->{
-            accountService.transfer(19, 20, 1001);
+            accountService.transfer(22, 23, 1001);
         });
     }
 
     @Test
     void transferBonus() throws IllegalAccessException, NoSuchElementException {
-        accountService.createBonusAccount(21);
-        accountService.createSavingsAccount(22, 1200);
-        Account account = accountService.getAccount(21);
+        accountService.createBonusAccount(24);
+        accountService.createSavingsAccount(25, 1200);
+        Account account = accountService.getAccount(24);
 
-        accountService.transfer(22, 21, 1200);
+        accountService.transfer(25, 24, 1200);
         assertThat(((BonusAccount) account).getBonus()).isEqualTo(16);
     }
 }
