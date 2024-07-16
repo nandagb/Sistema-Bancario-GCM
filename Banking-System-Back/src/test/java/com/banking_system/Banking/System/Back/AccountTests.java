@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.within;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -127,7 +129,7 @@ public class AccountTests {
             accountService.debitFromAccount(12, 1124);
         });
     }
-
+    
     void createSavingsAccounts(){
         accountService.createSavingsAccount(13, 0);
         accountService.createSavingsAccount(14, 100);
@@ -146,5 +148,55 @@ public class AccountTests {
         assertThat(account1.getBalance()).isEqualTo(0);
         assertThat(account2.getBalance()).isCloseTo(112.13f, within(0.001f));
         assertThat(account3.getBalance()).isCloseTo(168.195f, within(0.001f));
+    }
+
+    @Test
+    void transferNegativeAmount() throws IllegalAccessException, NoSuchElementException {
+        accountService.createSavingsAccount(13, 100);
+        accountService.createBonusAccount(14);
+
+        assertThat(accountService.transfer(13, 14, -100) == false);
+    }
+
+    @Test
+    void transferMoreThanBalanceSavings() throws NoSuchElementException {
+        accountService.createSavingsAccount(15, 100);
+        accountService.createBonusAccount(16);
+
+        assertThrows(IllegalAccessException.class, () ->{
+            accountService.transfer(15, 16, 101);
+        });
+    }
+
+    @Test
+    void transferMoreThanBalanceCurrent() throws NoSuchElementException {
+        accountService.createCurrentAccount(17);
+        accountService.createCurrentAccount(18);
+
+
+        assertThrows(IllegalAccessException.class, () ->{
+            accountService.transfer(17, 18, 1001);
+        });
+    }
+
+    @Test
+    void transferMoreThanBalanceBonus() throws NoSuchElementException {
+        accountService.createBonusAccount(19);
+        accountService.createBonusAccount(20);
+
+
+        assertThrows(IllegalAccessException.class, () ->{
+            accountService.transfer(19, 20, 1001);
+        });
+    }
+
+    @Test
+    void transferBonus() throws IllegalAccessException, NoSuchElementException {
+        accountService.createBonusAccount(21);
+        accountService.createSavingsAccount(22, 1200);
+        Account account = accountService.getAccount(21);
+
+        accountService.transfer(22, 21, 1200);
+        assertThat(((BonusAccount) account).getBonus()).isEqualTo(16);
     }
 }
