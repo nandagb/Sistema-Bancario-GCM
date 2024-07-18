@@ -7,6 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Git
+        run: |
+          git config --global user.email "nandagb23@example.com"
+          git config --global user.name "nandagb"
+          git config --global credential.helper cache
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
