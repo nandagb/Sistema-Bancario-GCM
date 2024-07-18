@@ -1,11 +1,17 @@
 name: cicd
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+    types: [closed]
 
 jobs:
   spring-build:
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Checkout repository
