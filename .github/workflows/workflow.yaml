@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clear Git cache
+        run: git config --global --unset credential.helper
+
       - name: Set up Git
         run: |
           git config --global user.email "nandagb23@example.com"
