@@ -7,18 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clear Git cache
-        run: git config --global --unset credential.helper
-
-      - name: Set up Git
-        run: |
-          git config --global user.email "nandagb23@example.com"
-          git config --global user.name "nandagb"
-          git config --global credential.helper cache
-
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
+          repository: nandagb/Sistema-Bancario-GCM
           token: ${{ secrets.GCM_TOKEN }}
 
       - name: Set up JDK 21
