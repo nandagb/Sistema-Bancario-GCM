@@ -17,7 +17,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Install Sudo 
-        run: apt update  && apt install sudo -y
+        run: sudo apt update  && sudo apt install sudo -y
 
       - name: Install Maven
         run: cd Banking-System-Back && sudo apt update  && sudo apt-get maven -y
