@@ -20,7 +20,7 @@ jobs:
         run: sudo apt update  && sudo apt install sudo -y
 
       - name: Install Maven
-        run: cd Banking-System-Back && sudo apt update  && sudo apt-get maven -y
+        run: cd Banking-System-Back && sudo apt update  && sudo apt install maven -y
 
       - name: Resolve Back
         run: cd Banking-System-Back && mvn install
