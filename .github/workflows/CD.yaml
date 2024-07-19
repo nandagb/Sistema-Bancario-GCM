@@ -1,9 +1,7 @@
 on:
   push:
-    tags:
-      - "rc-*"
     branches:
-      - release
+      - feature-adicionar-workflow-de-entrega-e-deploy-continuo
 
 jobs:
   run-quality-test:
