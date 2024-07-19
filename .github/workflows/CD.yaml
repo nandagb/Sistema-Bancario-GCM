@@ -1,7 +1,9 @@
 on:
   push:
+    tags:
+      - "rc-*"
     branches:
-      - feature-adicionar-workflow-de-entrega-e-deploy-continuo
+      - release
 
 jobs:
   run-quality-test:
@@ -16,6 +18,9 @@ jobs:
       - name: Resolve Back Dependencies
         run: cd Banking-System-Back && mvn dependency:resolve
 
+      - name: Build the System
+        run: cd Banking-System-Back && mvn clean package
+
       - name: Run Checkstyle
         run: cd Banking-System-Back && mvn checkstyle:check
 
@@ -24,3 +29,28 @@ jobs:
 
       - name: Run ESLint
         run: cd banking-system-front && npm run lint
+
+  spring-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Install Sudo
+        run: sudo apt update  && sudo apt install sudo -y
+
+      - name: Install Maven
+        run: cd Banking-System-Back && sudo apt update  && sudo apt install maven -y
+
+      - name: Resolve Back
+        run: cd Banking-System-Back && mvn install
+
+      - name: Run tests
+        run: cd Banking-System-Back && mvn test
