@@ -19,5 +19,8 @@ jobs:
       - name: Run Checkstyle
         run: cd Banking-System-Back && mvn checkstyle:check
 
+      - name: Resolve Front Dependencies
+        run: cd banking-system-front && npm install
+
       - name: Run ESLint
         run: cd banking-system-front && npm run lint
