@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - feature-adicionar-workflow-de-entrega-e-deploy-continuo
+
+jobs:
+  run-quality-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Maven
+        run: cd Banking-System-Back && sudo apt update  && sudo apt install maven -y
+
+      - name: Resolve Back Dependencies
+        run: cd Banking-System-Back && mvn dependency:resolve
+
+      - name: Run Checkstyle
+        run: cd Banking-System-Back && mvn checkstyle:check
+
+      - name: Run ESLint
+        run: cd Banking-System-Front && npm run lint
