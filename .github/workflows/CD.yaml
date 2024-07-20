@@ -1,0 +1,80 @@
+on:
+  push:
+    branches:
+      - release
+    tags:
+      - "rc-*"
+
+jobs:
+  run-quality-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'
+          distribution: 'zulu'
+
+      - name: Install Maven
+        run: cd Banking-System-Back && sudo apt update  && sudo apt install maven -y
+
+      - name: Resolve Back Dependencies
+        run: cd Banking-System-Back && mvn dependency:resolve
+
+      - name: Build the System
+        run: cd Banking-System-Back && mvn clean package
+
+      - name: Run Checkstyle
+        run: cd Banking-System-Back && mvn checkstyle:check
+
+      - name: Resolve Front Dependencies
+        run: cd banking-system-front && npm install
+
+      - name: Run ESLint
+        run: cd banking-system-front && npm run lint
+
+  spring-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'
+          distribution: 'zulu'
+
+      - name: Install Sudo
+        run: sudo apt update  && sudo apt install sudo -y
+
+      - name: Install Maven
+        run: cd Banking-System-Back && sudo apt update  && sudo apt install maven -y
+
+      - name: Resolve Back
+        run: cd Banking-System-Back && mvn install
+
+      - name: Run tests
+        run: cd Banking-System-Back && mvn test
+
+  create-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: create package
+        run: |
+          git pull
+          git checkout ${{github.ref_name}}
+          zip -r ${{github.ref_name}}.zip .
+
+      - name: Upload Package
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{github.ref_name}}
+          path: ${{github.ref_name}}.zip
