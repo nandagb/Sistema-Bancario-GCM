@@ -99,5 +99,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          working-directory:  ${{ github.workspace }}
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/banking-system-api:latest
