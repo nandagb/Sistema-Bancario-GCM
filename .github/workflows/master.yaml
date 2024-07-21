@@ -3,7 +3,9 @@ name: master
 on:
   push:
     branches:
-      - feature-publicar-imagem-docker
+      - master
+    tags:
+      - "rel-*"
 
 jobs:
   run-quality-test:
