@@ -95,12 +95,19 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: List files in repo
+        run: |
+          echo "Listing files in repo:"
+          ls -R
+
+      - name: List files in target directory
+        run: |
+          echo "Listing files in Banking-System-Back/target:"
+          ls -R Banking-System-Back/target
+
       - name: Build and push Docker image on Docker Hub
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/banking-system-api:latest
-
-      - name: List files in target directory
-        run: ls -R Banking-System-Back/target
