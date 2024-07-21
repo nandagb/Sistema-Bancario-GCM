@@ -101,3 +101,6 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/banking-system-api:latest
+
+      - name: List files in target directory
+        run: ls -R Banking-System-Back/target
