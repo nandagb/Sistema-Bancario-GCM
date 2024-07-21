@@ -1,4 +1,4 @@
-name: cicd
+name: develop
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'zulu'
 
       - name: Install Sudo 
@@ -35,7 +35,7 @@ jobs:
       - name: Build the System
         run:  cd Banking-System-Back && mvn clean package
 
-      - name: Build the System
+      - name: Run tests
         run:  cd Banking-System-Back && mvn test
 
   vue-build:
