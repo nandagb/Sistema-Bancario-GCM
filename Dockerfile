@@ -13,7 +13,7 @@ COPY Banking-System-Back/src ./src
 RUN mvn dependency:resolve
 RUN mvn clean package
 
-COPY /app/target/*.jar app.jar
+COPY /app/target/*.jar.original app.jar
 
 EXPOSE 8080
 
