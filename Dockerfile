@@ -13,8 +13,6 @@ COPY Banking-System-Back/src ./src
 RUN mvn dependency:resolve
 RUN mvn clean package
 
-COPY ./target/*.jar app.jar
-
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "Banking-System-Back-0.0.1-SNAPSHOT.jar"]
