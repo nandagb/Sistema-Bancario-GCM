@@ -102,8 +102,8 @@ jobs:
 
       - name: List files in target directory
         run: |
-          echo "Listing files in Banking-System-Back/target:"
-          ls -R Banking-System-Back/target
+          echo "Listing files in Banking-System-Back:"
+          ls -R Banking-System-Back
 
       - name: Build and push Docker image on Docker Hub
         uses: docker/build-push-action@v6
