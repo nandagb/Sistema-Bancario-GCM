@@ -142,7 +142,7 @@ public class AccountService {
             throw new IllegalAccessException();
         }
         Account account = accounts.stream().filter(acc -> acc.getNumber() == accountNumber).toList().get(0);
-        account.setBalance(account.getBalance() + creditValue);
+        //account.setBalance(account.getBalance() + creditValue);
     }
 
     public void addCreditBonusAccount(int accountNumber, int creditValue){
