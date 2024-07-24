@@ -30,7 +30,7 @@ public class AccountService {
     }
 
     public void createCurrentAccount(int accountNumber){
-        Account newAccount = new Account();
+        Account newAccount = newk Account();
         newAccount.setNumber(accountNumber);
         newAccount.setBalance(0);
         newAccount.setType("current_account");
