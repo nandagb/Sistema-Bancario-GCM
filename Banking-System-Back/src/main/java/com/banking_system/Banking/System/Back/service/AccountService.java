@@ -91,7 +91,7 @@ public class AccountService {
 
         float newBalance = account.getBalance() - value;
 
-        if (newBalance < 0) {
+        if ( (account.getType().equals("bonus_account") && newBalance < -2000) || (!account.getType().equals("bonus_account") && newBalance < 0) ) {
             throw new IllegalAccessException();
         } else {
             account.setBalance(newBalance);
@@ -119,7 +119,7 @@ public class AccountService {
             bonusAccount.setBonus(bonusAccount.getBonus() + Math.floorDiv(value, 150));
         }
 
-        if (newBalanceOrigin < 0) {
+        if ( (origin.getType().equals("bonus_account") && newBalanceOrigin < -2000) || (!origin.getType().equals("bonus_account") && newBalanceOrigin < 0) ) {
             throw new IllegalAccessException();
         } else {
             origin.setBalance(newBalanceOrigin);
