@@ -76,8 +76,8 @@ jobs:
 
       - name: create package
         run: |
-          git checkout ${{ github.base_ref }}
-          zip -r ${{github.base_ref}}.zip .
+          git checkout ${{github.ref}}
+          zip -r ${{github.ref_name}}.zip .
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
