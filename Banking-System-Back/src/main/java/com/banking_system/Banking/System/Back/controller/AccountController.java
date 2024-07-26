@@ -104,12 +104,7 @@ public class AccountController {
     public ResponseEntity<String> debitFromAccount(@RequestBody Map<String, Integer> data) {
         try {
             float newBalance = accountService.debitFromAccount(data.get("AccountNumber"), data.get("Value"));
-            if(newBalance >= 0 ){
-                return new ResponseEntity<>("Saldo: " + newBalance, HttpStatus.OK);
-            }
-            else{
-                return new ResponseEntity<>("Operação falhou! :( ", HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            return new ResponseEntity<>("Saldo: " + newBalance, HttpStatus.OK);
 
         } catch (IllegalAccessException e) {
             return new ResponseEntity<>("Saldo insuficiente! :( Operação abortada!", HttpStatus.INTERNAL_SERVER_ERROR);
