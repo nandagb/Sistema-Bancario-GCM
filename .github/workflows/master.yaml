@@ -73,10 +73,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: create package
-        run: | 
-          git checkout ${{github.ref_name}}
+        run: |
           zip -r ${{github.ref_name}}.zip .
 
       - name: Upload Package
