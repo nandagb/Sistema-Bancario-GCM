@@ -126,7 +126,7 @@ public class AccountTests {
         accountService.createBonusAccount(12);
         accountService.addCredit(12, 100);
         assertThrows(IllegalAccessException.class, () -> {
-            accountService.debitFromAccount(12, 1124);
+            accountService.debitFromAccount(12, 2124);
         });
     }
     
@@ -186,7 +186,7 @@ public class AccountTests {
 
 
         assertThrows(IllegalAccessException.class, () ->{
-            accountService.transfer(22, 23, 1001);
+            accountService.transfer(22, 23, 2001);
         });
     }
 
