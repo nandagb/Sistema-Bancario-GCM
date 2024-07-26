@@ -66,7 +66,7 @@ public class AccountController {
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     /* CRIA AS CONTAS POUPANÇA*/
     @CrossOrigin(origins="*")
     @PostMapping("/create/savings")
@@ -104,7 +104,13 @@ public class AccountController {
     public ResponseEntity<String> debitFromAccount(@RequestBody Map<String, Integer> data) {
         try {
             float newBalance = accountService.debitFromAccount(data.get("AccountNumber"), data.get("Value"));
-            return new ResponseEntity<>("Saldo: " + newBalance, HttpStatus.OK);
+            if(newBalance >= 0 ){
+                return new ResponseEntity<>("Saldo: " + newBalance, HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>("Operação falhou! :( ", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
         } catch (IllegalAccessException e) {
             return new ResponseEntity<>("Saldo insuficiente! :( Operação abortada!", HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (NoSuchElementException e) {
