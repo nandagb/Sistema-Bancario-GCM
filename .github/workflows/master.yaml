@@ -81,6 +81,7 @@ jobs:
           else
             BRANCH_NAME=${{ github.head_ref }}
           fi
+          git fetch origin $BRANCH_NAME:$BRANCH_NAME
           git checkout $BRANCH_NAME
           zip -r $BRANCH_NAME.zip .
 
