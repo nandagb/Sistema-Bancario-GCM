@@ -10,6 +10,7 @@ import TransferPage from './components/pages/TransferPage.vue'
 import CreditPage from './components/pages/CreditPage.vue'
 import SignUpBonusAccount from './components/pages/SignUpBonusAccount.vue'
 import YieldInterest from './components/pages/YieldInterest.vue'
+import AccountPage from './components/pages/AccountPage.vue'
 
 
 const routes = [
@@ -57,7 +58,13 @@ const routes = [
         path:"/yield_interest",
         name:"yield_interest",
         component:YieldInterest
+    },
+    {
+        path:"/get_account",
+        name:"get_account",
+        component:AccountPage
     }
+
 ]
 
 const router = createRouter({

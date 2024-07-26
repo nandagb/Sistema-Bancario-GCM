@@ -16,6 +16,12 @@
       <AppButton>Criar Conta Bônus</AppButton>
     </RouterLink>
   </div>
+
+  <div>
+    <RouterLink to="/get_account">
+      <AppButton>Consultar Conta</AppButton>
+    </RouterLink>
+  </div>
     
   <div>
     <RouterLink to="/debit">
