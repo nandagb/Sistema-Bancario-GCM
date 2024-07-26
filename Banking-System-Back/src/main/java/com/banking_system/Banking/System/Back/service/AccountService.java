@@ -97,7 +97,7 @@ public class AccountService {
 
         if (newBalance < 0 && account.getType().equals("savings")) {
             throw new IllegalAccessException();
-        } else if (newBalance < -1000 && (account.getType().equals("bonus_account") || account.getType().equals("current_account"))) {
+        } else if (newBalance < -1000 && account.getType().equals("current_account") || (account.getType().equals("bonus_account") && newBalance < -2000)) {
             throw new IllegalAccessException();
         } else {
             account.setBalance(newBalance);
@@ -127,7 +127,7 @@ public class AccountService {
 
         if (newBalanceOrigin < 0 && origin.getType().equals("savings")) {
             throw new IllegalAccessException();
-        } else if (newBalanceOrigin < -1000 && (origin.getType().equals("current_account") || origin.getType().equals("bonus_account"))) {
+        } else if (newBalanceOrigin < -1000 && origin.getType().equals("current_account") || ( newBalanceOrigin < -2000 && origin.getType().equals("bonus_account"))) {
             throw new IllegalAccessException();
         } else {
             origin.setBalance(newBalanceOrigin);
