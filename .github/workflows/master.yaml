@@ -76,7 +76,6 @@ jobs:
 
       - name: create package
         run: |
-          git pull
           git checkout ${{github.ref_name}}
           zip -r ${{github.ref_name}}.zip .
 
