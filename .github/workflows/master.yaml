@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - novo-teste-branch
     tags:
       - "rel-*"
   pull_request:
